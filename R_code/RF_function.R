@@ -5,7 +5,7 @@ type <- read.table(file.path("LungCancer.SampleType.txt"),sep = "\t",header=T)
 lung.data <- data.frame(t(lung[,3:122]))
 lung.data$type <- type$Type
 
-##1
+## 5-fold-cross-validation with random forest function from R packages
 n.data <- nrow(lung.data)
 k <- 5
 n.groups <- n.data%/%k
@@ -57,7 +57,7 @@ normal_eval <- data.frame('precision'=normal_precision,'recall'=normal_recall,'F
 cancer_eval
 normal_eval
 
-##2
+## My random forest function
 library(rpart)
 test.cancer <- sample(1:60,12)
 test.normal <- sample(61:120,12)
@@ -75,7 +75,7 @@ my.rf <- function(train,test){
     decision <- ifelse(dt.pred$Cancer>0.05,"Cancer","Normal")
     dt.decision <- cbind(dt.decision,decision)
   }
-  ##majority voting
+  ### majority voting
   test.predict <- apply(dt.decision,1,function(x) names(which.max(table(x))))
   conf <- table(test[,48],test.predict)
   return(conf)
