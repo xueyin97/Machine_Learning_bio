@@ -49,7 +49,7 @@ def emsemble(data,label):
 
 
 #run the functions for Lung_sig_result_py.txt
-path='/Users/Miche/OneDrive/Documents/Michelle/SEMESTER3/Data Science/Assignment/assignment5/'
+path='/Users/'
 genes1 = pd.read_csv(path+'Lung_sig_result_py.txt', index_col = 0, sep = "\t")
 genes1.drop(genes1.columns[[0,1,2]], axis=1, inplace=True)
 data1 = genes1.transpose()
