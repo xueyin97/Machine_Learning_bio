@@ -1,4 +1,4 @@
-##PART1
+# hierarchical clustering
 lung<-read.table(file.path("lung-cancer-sig-data.txt"),sep = "\t",header=T)
 lung.fold<-as.data.frame(t(lung[,2:122]))
 lung.fold<-lung.fold[-1,]
@@ -12,6 +12,7 @@ plot(fit)
 groups<-cutree(fit,k=2)
 rect.hclust(fit,k=2,border="red")
 
+# heatmap
 a<-as.matrix(lung.fold)
 row.names(a)<-colnames(lung)[3:122]
 colnames(a)<-c(colnames(a)[1:34],"",colnames(a)[36:47])
@@ -29,7 +30,8 @@ lab[i]<-"Cancer"
 }
 heatmap(a,distfun = dist,hclustfun = hclust,RowSideColors = col,cexRow = 0.7,labRow = lab)
 
-#Use 2 to be the initial number of clusters to do the cluster
+# K-means clustering
+## Use 2 to be the initial number of clusters to do the k-Means cluster
 km<-kmeans(a,2)
 km.cluster<-as.data.frame(km$cluster)
 km.centers<-as.data.frame(km$centers)
@@ -52,7 +54,7 @@ plot(pca.fit$x[,1],pca.fit$x[,2],col=col,pch=shape,xlab = "First Component",ylab
 legend(-19,15,legend = c("Cancer","CTL"),col = c("red","green"),cex = 0.8,lwd = 1, lty = 1)
 legend(-19,11.5,legend=c("Cluster1","Cluster2"),pch = c(1,2,1,2))
 
-#Use 4 to be the initial number of clusters to do the cluster
+## Use 4 to be the initial number of clusters to do the cluster
 km<-kmeans(a,4)
 km.cluster<-as.data.frame(km$cluster)
 km.centers<-as.data.frame(km$centers)
@@ -81,7 +83,7 @@ legend(-19,15,legend = c("Cancer","CTL"),col = c("red","green"),cex = 0.8,
 legend(-19,11.5,legend=c("Cluster1","Cluster2","Cluster3","Cluster4"),pch = c(1,2,3,4))
 
 
-##PART2
+# My K-median clustering
 manhat <- function(centroid, dataMatrix) {
   distance <- matrix(NA, nrow=dim(centroid)[1], ncol=dim(dataMatrix)[1])
   for(i in 1:nrow(dataMatrix)) {
