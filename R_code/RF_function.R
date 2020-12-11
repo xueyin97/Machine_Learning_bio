@@ -1,7 +1,6 @@
 library(randomForest)
-setwd("~/Michelle/SEMESTER3/Machine Learning/assignment")
-lung <- read.table(file.path("Assignment7/lung-cancer-sig-data.txt"),sep = "\t",header=T)
-type <- read.table(file.path("Assignment7/LungCancer.SampleType.txt"),sep = "\t",header=T)
+lung <- read.table(file.path("lung-cancer-sig-data.txt"),sep = "\t",header=T)
+type <- read.table(file.path("LungCancer.SampleType.txt"),sep = "\t",header=T)
 
 lung.data <- data.frame(t(lung[,3:122]))
 lung.data$type <- type$Type
