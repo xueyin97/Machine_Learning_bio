@@ -1,6 +1,16 @@
 # Machine Learning on the microarray dataset of Lung Cancer
 ## Python_code
-
+### significant_genes_selection.py:
+Select significant genes by Row t-test for Every Gene
+1. Get the raw p-value and Benjamini-Hochberg False Positive Rate (BH-FDR) Adjusted p-value, Insert them into the first two columns of the original data
+2. Use the BH-FDR Adjusted p-value <0.05 as cutoff to take significant gene list, and export the data into one txt file.
+### ML_models.py:
+The First 60 Columns are Cancer Samples and the Second 60 Columns are Control Samples.
+1. Run 5-fold Cross-Validation using Following Method, and Report Average F1 Scores
+– Logistic Regression
+– Support Vector Machine
+– Random Forest
+2. Use 100% data to build an Ensemble Learning Model (soft voting) using Logistic Regression, Support Vector Machine, Random Forest
 ## R_code
 ### Clustering.R: 
 1. Do hierarchical clustering on samples, and cut the dendrogram to make samples into areasonable number of clusters
