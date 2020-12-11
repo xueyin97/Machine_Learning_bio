@@ -8,7 +8,7 @@ label <- read.table(file.path("Assignment8/LungCancer.SampleType.txt"),sep = "\t
 svm.data <- as.data.frame(t(lung[,3:122]))
 colnames(svm.data)<-lung[,1]
 
-##Part1
+##My function to do stepdown feature selection using Support Vector Machine(SVM)
 mySVM <- function(X,y,N){
   X$type <- y
   n.data <- nrow(X)
@@ -50,15 +50,3 @@ mySVM <- function(X,y,N){
 mySVM(svm.data,label$Type,46)
 mySVM(svm.data,label$Type,45)
 mySVM(svm.data,label$Type,44)
-
-##Part2
-lasso.data <- data.matrix(t(lung[,3:122]))
-colnames(lasso.data)<-lung[,1]
-lung.cancer <- c(rep(1,60),rep(0,60))
-cv.glm.limma <- cv.glmnet(lasso.data,lung.cancer,alpha=1)
-plot(cv.glm.limma)
-best_lambda <- cv.glm.limma$lambda.min
-best_lambda
-cv.glm.probe <- coef(cv.glm.limma,s="lambda.min")
-cv.glm.probe2 <- names(cv.glm.probe[cv.glm.probe[,1]!=0,])[2:19]
-cv.glm.probe2
