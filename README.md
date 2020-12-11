@@ -15,3 +15,10 @@
 – Return 2 types of Result Values
 • Cluster Assignment for each Data Record
 • Centers of each Cluster
+### RF_funuction.R:
+1. Do 5-fold cross-validation on Random Forest using the R “randomForest” package, and each time:
+– Use 80% dataset as training data to train the model
+– leave 20% as testing data, and use it to test the trained model
+– Balance the numbers of Cancer and Control samples in both training and testing subsets
+– Output the confusion matrix, the averaged precision, recall, and F-1 score for both Cancer and Control classes
+2. Write R function to do Random Forest (1/3 features, 100 trees) using the R package “rpart”
