@@ -1,6 +1,5 @@
 ##PART1
-setwd("~/Michelle/SEMESTER3/Machine Learning/assignment")
-lung<-read.table(file.path("Assignment4/lung-cancer-sig-data.txt"),sep = "\t",header=T)
+lung<-read.table(file.path("lung-cancer-sig-data.txt"),sep = "\t",header=T)
 lung.fold<-as.data.frame(t(lung[,2:122]))
 lung.fold<-lung.fold[-1,]
 colnames(lung.fold)<-lung[,2]
@@ -34,8 +33,8 @@ heatmap(a,distfun = dist,hclustfun = hclust,RowSideColors = col,cexRow = 0.7,lab
 km<-kmeans(a,2)
 km.cluster<-as.data.frame(km$cluster)
 km.centers<-as.data.frame(km$centers)
-write.table(km.cluster,file = "Assignment4/cluster2.txt")
-write.table(km.centers,file ="Assignment4/centers2.txt" )
+write.table(km.cluster,file = "cluster2.txt")
+write.table(km.centers,file ="centers2.txt" )
 
 par(mfrow=c(1,2))
 plot(1:47,km.centers[1,],pch=16,main="Profile of the first cluster's centroid",xlab = "Genes",ylab = "Expression Values")
@@ -57,8 +56,8 @@ legend(-19,11.5,legend=c("Cluster1","Cluster2"),pch = c(1,2,1,2))
 km<-kmeans(a,4)
 km.cluster<-as.data.frame(km$cluster)
 km.centers<-as.data.frame(km$centers)
-write.table(km.cluster,file = "Assignment4/cluster4.txt")
-write.table(km.centers,file ="Assignment4/centers4.txt" )
+write.table(km.cluster,file = "cluster4.txt")
+write.table(km.centers,file ="centers4.txt" )
 
 par(mfrow=c(2,2))
 plot(1:47,km.centers[1,],pch=16,main="Profile of the first cluster's centroid",xlab = "Genes",ylab = "Expression Values")
