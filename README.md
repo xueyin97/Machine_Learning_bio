@@ -22,3 +22,11 @@
 – Balance the numbers of Cancer and Control samples in both training and testing subsets
 – Output the confusion matrix, the averaged precision, recall, and F-1 score for both Cancer and Control classes
 2. Write R function to do Random Forest (1/3 features, 100 trees) using the R package “rpart”
+### SVM_function.R:
+Write R Function to do Step-down (Backward) Feature Selection using SVM:
+Step-down algorithm:
+Let F = {all features}
+While not reduced to desired number of features
+For each feature f ∈ F:
+Estimate model’s performance on feature set F - f (using cross-validation)
+Remove the f that leads to the best performed model with (F-f)
