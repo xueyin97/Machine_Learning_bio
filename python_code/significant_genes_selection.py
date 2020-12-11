@@ -1,6 +1,6 @@
 import pandas as pd
 from scipy import stats
-path='/Users/Miche/OneDrive/Documents/Michelle/SEMESTER3/Data Science/Assignment/assignment4/'
+path='/Users/' #path to the data file
 predata=pd.read_csv(path+'LungCancer.Preprocessed.txt',sep='\t',index_col='ProbeID')
 Cancer=predata.iloc[:,:60]
 Control=predata.iloc[:,60:]
