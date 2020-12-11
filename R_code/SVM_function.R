@@ -1,9 +1,8 @@
 library(glmnet)
 library(e1071)
 
-setwd("~/Michelle/SEMESTER3/Machine Learning/assignment")
-lung <- read.table(file.path("Assignment8/lung-cancer-sig-data.txt"),sep = "\t",header=T)
-label <- read.table(file.path("Assignment8/LungCancer.SampleType.txt"),sep = "\t",header=T)
+lung <- read.table(file.path("lung-cancer-sig-data.txt"),sep = "\t",header=T)
+label <- read.table(file.path("LungCancer.SampleType.txt"),sep = "\t",header=T)
 
 svm.data <- as.data.frame(t(lung[,3:122]))
 colnames(svm.data)<-lung[,1]
@@ -46,7 +45,7 @@ mySVM <- function(X,y,N){
   return(return.list)
 }
 
-#test mySVM function
+#test mySVM function(selecting 46/45/44 features)
 mySVM(svm.data,label$Type,46)
 mySVM(svm.data,label$Type,45)
 mySVM(svm.data,label$Type,44)
